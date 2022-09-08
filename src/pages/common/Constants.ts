@@ -21,11 +21,13 @@ export const DEPLOY_ENV = {
   TCAT: "tcat-prod",
   BFE: "bfe-prod",
   BFERENTAL: "bfe-rental-prod",
+  JOBSITE: "jobsite-prod",
 };
 export const isEnvironmentBFE: boolean = checkEnvironment(DEPLOY_ENV.BFE);
 export const isEnvironmentTCAT: boolean = checkEnvironment(DEPLOY_ENV.TCAT);
 export const isEnvironmentBFERENTAL: boolean = checkEnvironment(DEPLOY_ENV.BFERENTAL);
 export const isEnvironmentBFE_or_BFERENTAL = checkEnvironment(DEPLOY_ENV.BFE) || checkEnvironment(DEPLOY_ENV.BFERENTAL);
+export const isEnvironmentJOBSITE: boolean = checkEnvironment(DEPLOY_ENV.JOBSITE);
 
 export const DOMAINBASE = checkEnvironment(DEPLOY_ENV.BFE)
   ? "https://used.battlefieldequipment.ca"
@@ -44,6 +46,7 @@ export const IMAGES = {
   LOGO_TCAT: getImage("logo.gif"),
   LOGO_BFE: getImage("bfe-logo.png"),
   LOGO_BFE_FR: getImage("bfe-logo-fr.png"),
+  LOGO_JOBSITE: getImage("jobsite-logo.png"),
   NOIMG_DEFAULTSRC: getImage("image-coming-soon.jpg"),
   NOIMG_DEFAULTSRC_BFERENTAL: getImage("image-coming-soon-bferental.jpg"),
   FLAG_CA: getImage("flag_ca.png"),
@@ -86,7 +89,9 @@ export const PARAMS = {
   PRICE_MAX: "max",
   KEYWORD: "keyword",
   HOURS_MAX: "hrs",
+  CONSIGNMENT: 'consignmentOnly',
   CERTIFIED: "certified",
+  BFE_INV: "bfeinv",
   VIEW_FAVES: "fav",
   VIEW_DEALS: "deals",
   PAGE: "page",
@@ -100,6 +105,7 @@ export const PHONENUMBERS = {
   POWER_TCAT: "1-888-513-3694",
   BFE: "1-800-736-8228",
   BFERENTAL: "1-866-542-1989",
+  JOBSITE: "1-866-484-2739",
 };
 
 export const ELOQUAFORMS = {
@@ -160,6 +166,7 @@ export const searchFiltersEmptyDefault: searchFilters = {
   yearMax: null,
   hoursMax: null,
   city: null,
+  consignmentOnly: false,
   certifiedOnly: false,
   battlefieldInventory: false,
   rentalFleetAvailability: false,

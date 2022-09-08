@@ -42,6 +42,9 @@ export function getBodyClassNames(filters) {
   if (Constants.isEnvironmentBFE_or_BFERENTAL) {
     bodyClassNames.push("bfetheme");
   }
+  if (Constants.isEnvironmentJOBSITE) {
+    bodyClassNames.push("jobsite-theme")
+  }
   if (filters.viewFaves) {
     bodyClassNames.push("viewFaves");
   }

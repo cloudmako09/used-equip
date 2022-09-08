@@ -5,6 +5,7 @@ import {
   CLASS_POWER,
   isEnvironmentBFE,
   isEnvironmentBFERENTAL,
+  isEnvironmentJOBSITE,
 } from "../../common/Constants";
 
 type Props_SeoTextHeader = {
@@ -17,7 +18,9 @@ const SeoTextHeader = (props: Props_SeoTextHeader) => {
   console.log("Render SeoTextHeader ", props);
 
   let h1title =
-    props.lang === "fr" ? "Équipement lourd usagé" : "Used Heavy Equipment";
+    props.lang === "fr"
+      ? "Outils & Équipements d'Occasion"
+      : "Used Tools & Equipment";
   if (isEnvironmentBFE) {
     h1title =
       props.lang === "fr"
@@ -28,6 +31,10 @@ const SeoTextHeader = (props: Props_SeoTextHeader) => {
       props.lang === "fr"
         ? "Équipement de flotte de location d'occasion"
         : "Used Rental Fleet Equipment";
+  }
+
+  if (isEnvironmentBFE && window.location.toString().includes("work-tools")) {
+    h1title = props.lang === "fr" ? "Équipement compact" : "Compact Equipment";
   }
 
   if (props.currentCatClass === CLASS_POWER) {
@@ -45,6 +52,10 @@ const SeoTextHeader = (props: Props_SeoTextHeader) => {
     props.lang === "fr"
       ? "Location d’équipement Battlefield offre à prix avantageux une large gamme de machines d’occasion de qualité avec peu d’heures d’utilisation. Tous nos équipements font l’objet d’un entretien régulier par nos techniciens formés en usine selon un programme de maintenance rigoureux. Location d’équipement Battlefield procure des produits de marque de confiance et est le distributeur autorisé de produits Caterpillar, Spectra Precision/Trimble, Wacker Neuson, STIHL, Honda, SkyJack, Genie, Huqsvarna, Atlas Copco, Bosch, Godwin, entre autres. "
       : "Battlefield Equipment Rentals offers a wide range of quality, low-hour used machines for sale at great prices. All of our equipment has been regularly serviced by our Factory Trained Technicians and has undergone a strict maintenance schedule.  Battlefield Equipment Rentals sells thousands of brand name products and is the authorized distributor for such brands as Caterpillar, Spectra Precision / Trimble, Wacker Neuson, Stihl, Honda, SkyJack, Genie, Husqvarna, Atlas Copco, Bosch, Gorman-Rupp, as well as many others.";
+  const getCategorySeoTextJobsite =
+    props.lang === "fr"
+      ? "Location d’outils industriels Jobsite offrent une vaste gamme d'outils et d'équipements d'occasion de qualité à vendre à des prix avantageux. Tous nos équipements ont été régulièrement entretenus par nos techniciens formés en usine et ont fait l'objet d'un programme d'entretien strict. Location d’outils industriels Jobsite vend des milliers de produits de marque et est le distributeur autorisé de marques telles que Lincoln Electric, Greenlee, Rigid, Sumner, RAD, Enerpac, Genie, Eagle Pro, ainsi que de nombreuses autres."
+      : "Jobsite Industrial Rental Services offers a wide range of quality used tools and equipment for sale at great prices. All of our equipment has been regularly serviced by our Factory Trained Technicians and has undergone a strict maintenance schedule. Jobsite Industrial Rental Services sells thousands of brand name products and is the authorized distributor for such brands as Lincoln Electric, Greenlee, Rigid, Sumner, RAD, Enerpac, Genie, Eagle Pro, as well as many others.";
 
   return (
     <>
@@ -60,6 +71,8 @@ const SeoTextHeader = (props: Props_SeoTextHeader) => {
       <div id="CategoryFullDescription">
         {isEnvironmentBFERENTAL
           ? getCategorySeoTextBFERental
+          : isEnvironmentJOBSITE
+          ? getCategorySeoTextJobsite
           : getCategorySeoText}
       </div>
     </>

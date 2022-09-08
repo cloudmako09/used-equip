@@ -1184,3 +1184,38 @@ label {
 .red {
   color: #af0e0e;
 }
+
+// Inspection Report
+.periodic-annual-inspection-report {
+  .inspection-header {
+    padding-bottom: 10px;
+    strong {
+      margin-right: 5px;
+      &#id {
+        margin-left: 15px;
+      }
+    }
+  }
+  .accordion__button {
+    background: #ffcd11;
+    transition: .2s;
+    &:focus, &:hover {
+      background: #333;
+      color: #fff;
+    }
+  }
+  .table {
+    margin-bottom: 0px;
+  }
+  .table>thead>tr>th {
+    border-bottom: none;
+    font-style: italic;
+  }
+  tr {
+    border-bottom: .5px solid #ddd;
+  }
+  td {
+    border-top: none !important;
+    line-height: 1.8;
+  }
+}

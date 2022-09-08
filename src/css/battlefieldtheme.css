@@ -1,0 +1,190 @@
+body.bfetheme button,
+body.bfetheme .btn {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  border-radius: 0;
+}
+
+body.bfetheme button:hover,
+body.bfetheme .btn:hover {
+  text-decoration: none;
+}
+
+body.bfetheme #prenav {
+  background-color: #af0e0e;
+}
+
+@media screen and (max-width: 992px) {
+  body.bfetheme .nav-container {
+    background-color: #af0e0e;
+  }
+  body.bfetheme .langswitcher {
+    border-bottom: 1px solid #fff;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  body.bfetheme .h-menu .navbar-right li ul.dropdown-menu li > a {
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+  body.bfetheme .h-menu .navbar-right li ul.dropdown-menu li > a:hover {
+    background: #af0e0e;
+    color: #fff;
+  }
+}
+
+body.bfetheme.pgHome input#home-mainsearch, body.bfetheme.pgHome input.form-control {
+  border-radius: 0 !important;
+}
+
+body.bfetheme.pgHome p.morefilterslink {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+body.bfetheme.pgHome .searchFoundText span {
+  color: #fff;
+}
+
+@media screen and (max-width: 992px) {
+  body.bfetheme.pgHome .searchFoundText span {
+    color: #363636;
+  }
+}
+
+body.bfetheme.pgHome #home-introsectionwrap .find-btn {
+  border-radius: 0;
+  border-bottom: none;
+}
+
+body.bfetheme.pgHome #home-introsectionwrap .find-btn:hover {
+  border-bottom: none;
+}
+
+body.bfetheme.pgHome #home-introsectionwrap .wehaveitall,
+body.bfetheme.pgHome #sectionFamilyList {
+  background-color: #af0e0e;
+  color: #fff;
+}
+
+body.bfetheme.pgHome #home-introsectionwrap .wehaveitall::after,
+body.bfetheme.pgHome #sectionFamilyList::after {
+  border-top-color: #af0e0e;
+}
+
+body.bfetheme.pgHome #sectionFamilyList {
+  background-color: #363636;
+}
+
+body.bfetheme.pgHome #sectionFamilyList .homeequiplink {
+  text-align: center;
+}
+
+@media screen and (min-width: 992px) {
+  body.bfetheme.pgHome #sectionFamilyList {
+    margin-top: -103px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  body.bfetheme.pgHome #ironclad-section,
+  body.bfetheme.pgHome #sectionFamilyList {
+    padding: 40px 0px 40px 0px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  body.bfetheme.pgHome #ironclad-section,
+  body.bfetheme.pgHome #sectionFamilyList {
+    padding: 100px 0px 100px 0px;
+  }
+}
+
+body.bfetheme.pgListing iframe, body.bfetheme.pgDetail iframe {
+  overflow: hidden;
+  height: 1630px;
+  border: none;
+}
+
+body.bfetheme.pgListing .btn.top-phone {
+  font-size: 25px;
+  font-weight: 800;
+  color: #af0e0e;
+}
+
+body.bfetheme.pgListing .btn.top-phone:hover {
+  color: #333 !important;
+  background-color: #e6e6e6 !important;
+  border: 1px solid #adadad !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+body.bfetheme.pgListing .btn-top-email span {
+  font-weight: 800;
+}
+
+body.bfetheme.pgListing .product-keyword,
+body.bfetheme.pgListing .input-group-addon {
+  border-radius: 0;
+}
+
+body.bfetheme.pgListing #list-sorter label {
+  padding-right: 5px;
+}
+
+body.bfetheme.pgListing .product-price p {
+  color: black;
+  font-weight: 800 !important;
+  font-size: 20px !important;
+}
+
+body.bfetheme.pgListing #mosaic {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+body.bfetheme.pgListing #mosaic .product-wrapper {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+body.bfetheme.pgListing #mosaic .product-wrapper:hover {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  background-color: #fff;
+  -webkit-box-shadow: 0 10px 20px #c7c7c7;
+          box-shadow: 0 10px 20px #c7c7c7;
+}
+
+body.bfetheme.pgDetail .current-avail p#current-avail {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+body.bfetheme.pgDetail .detailMainInfo a {
+  color: #af0e0e;
+}
+
+body.bfetheme .footer p.footer-phone a {
+  color: #fff;
+}
+
+body.bfetheme .formspree-form input,
+body.bfetheme .formspree-form select {
+  margin-bottom: 20px;
+}
+
+body.bfetheme .formspree-form button {
+  background-color: #ffc821;
+  color: #363636;
+  border: none;
+  font-weight: 800;
+}
+
+body.bfetheme .formspree-form button:focus, body.bfetheme .formspree-form button:hover {
+  background-color: #363636;
+  color: #fff;
+}
+/*# sourceMappingURL=battlefieldtheme.css.map */

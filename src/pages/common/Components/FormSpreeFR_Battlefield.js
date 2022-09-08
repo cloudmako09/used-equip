@@ -21,7 +21,7 @@ export default class FormSpreeFR extends React.Component {
           <input
             type="hidden"
             name="_cc"
-            value="david.white@toromont.com,Elizabeth.Willis@toromont.com,Will.Bradley@Toromont.com"
+            value="david.white@toromont.com,CCELeads@Toromont.com"
           />
           <div className="row">
             <div className="col-lg-6">
@@ -30,27 +30,43 @@ export default class FormSpreeFR extends React.Component {
             </div>
             <div className="col-lg-6">
               <label>Nom de famille</label>
-              <input type="text" name="Nom de famille" aria-label="Nom de famille" />
+              <input
+                type="text"
+                name="Nom de famille"
+                aria-label="Nom de famille"
+              />
             </div>
           </div>
           <div className="row">
             <div className="col-lg-6">
               <label>Nom de la compagnie</label>
-              <input type="text" name="Nom de la compagnie" aria-label="Nom de la compagnie" />
+              <input
+                type="text"
+                name="Nom de la compagnie"
+                aria-label="Nom de la compagnie"
+              />
             </div>
             <div className="col-lg-6">
               <label>Adresse courriel</label>
-              <input type="email" name="Adresse courriel" aria-label="Adresse courriel" />
+              <input
+                type="email"
+                name="Adresse courriel"
+                aria-label="Adresse courriel"
+              />
             </div>
           </div>
           <div className="row">
             <div className="col-lg-6">
               <label>Numéro de téléphone portable</label>
-              <input type="text" name="Numéro de téléphone portable" aria-label="Numéro de téléphone portable" />
+              <input
+                type="text"
+                name="Numéro de téléphone portable"
+                aria-label="Numéro de téléphone portable"
+              />
             </div>
             <div className="col-lg-6">
               <label>Adresse</label>
-              <input type="text" name="Adresse" aria-label="Adresse"/>
+              <input type="text" name="Adresse" aria-label="Adresse" />
             </div>
           </div>
           <div className="row">
@@ -76,10 +92,14 @@ export default class FormSpreeFR extends React.Component {
           <div className="row">
             <div className="col-lg-6">
               <label>Machines ou services intéressés</label>
-              <input type="text" name="Machines ou services intéressés" aria-label="Machines ou services intéressés" />
+              <input
+                type="text"
+                name="Machines ou services intéressés"
+                aria-label="Machines ou services intéressés"
+              />
             </div>
           </div>
-            
+
           {status === "SUCCESS" ? (
             <p>Merci pour votre soumission! Nous vous contacterons sous peu.</p>
           ) : (

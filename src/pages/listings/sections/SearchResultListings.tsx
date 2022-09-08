@@ -21,7 +21,7 @@ import shoppingCart, {
   getCartDataAttribute,
 } from "../../../js_vanilla/used-favouriteAddon";
 import NoResultsFamEmptyMsg from "../components/NoResultsFamEmptyMsg";
-import { isEnvironmentBFERENTAL, isEnvironmentBFE_or_BFERENTAL, ITEMSPERPAGE, TEXT } from "../../common/Constants";
+import { isEnvironmentBFE, isEnvironmentBFERENTAL, isEnvironmentBFE_or_BFERENTAL, isEnvironmentJOBSITE, ITEMSPERPAGE, TEXT } from "../../common/Constants";
 
 
 type Props_SearchResultListings = {
@@ -52,7 +52,7 @@ export default class SearchResultListings extends React.PureComponent<
             slug(
               curProduct["product-family-categories"].category["category-code"]
             ),
-            curProduct["serial-number"],
+            isEnvironmentBFE ? curProduct["serial-number"] : curProduct["id"],
             this.props.filters.viewDeals ? false : true,
             this.props.filters,
             this.props.pagingState.curPage
@@ -225,7 +225,7 @@ export default class SearchResultListings extends React.PureComponent<
                         : null}
                     </p>
                   </div>
-                  {isEnvironmentBFERENTAL ? (
+                  {isEnvironmentBFERENTAL || isEnvironmentJOBSITE ? (
                     <p className={curProduct.availability === 'Yes' ? 'green' : 'red'}>
                       {curProduct.availability === 'Yes' ? this.props.lang === "en" ? "Available" : "Disponible" : this.props.lang === "en" ? "Not Available" : "Pas disponible"}
                       </p>

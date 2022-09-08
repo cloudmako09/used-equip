@@ -1,11 +1,8 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from "react";
-import {
-  outputEnFr, 
-  getPhoneNumber,
-} from "../HelperFunctions";  
-import FooterSubscribeForm_Tcat_hubspot from "./FooterSubscribeForm_Tcat_hubspot"; 
-import ScrollTopButton from "./ScrollTopButton"; 
+import { outputEnFr, getPhoneNumber } from "../HelperFunctions";
+import FooterSubscribeForm_Tcat_hubspot from "./FooterSubscribeForm_Tcat_hubspot";
+import ScrollTopButton from "./ScrollTopButton";
 
 type Props_footer = {
   lang: string;
@@ -42,12 +39,10 @@ export default class Footer_TCAT extends React.PureComponent<Props_footer> {
               {getPhoneNumber(this.props.currentCatClass)}
             </a>
           </p>
-         
-         
-          <FooterSubscribeForm_Tcat_hubspot 
-          lang={this.props.lang} 
-          currentCatClass={this.props.currentCatClass} />  
-          
+          <FooterSubscribeForm_Tcat_hubspot
+            lang={this.props.lang}
+            currentCatClass={this.props.currentCatClass}
+          />
           <span>
             {outputEnFr(
               "\u00a9 " +
@@ -78,7 +73,7 @@ export default class Footer_TCAT extends React.PureComponent<Props_footer> {
             href="//www.toromont.com/policy.asp"
             target="_blank"
             rel="noopener noreferrer"
-            className="policy-links" 
+            className="policy-links"
           >
             {outputEnFr(
               "Website Privacy Statement",
@@ -88,24 +83,20 @@ export default class Footer_TCAT extends React.PureComponent<Props_footer> {
           </a>
           <br />
           <a
-            href={outputEnFr("https://www.toromontcat.com/redirect/aoda-statement",
-            "https://www.toromontcat.com/redirect/aoda-statement-fr",
-            this.props.lang       
+            href={outputEnFr(
+              "https://www.toromont.com/accessibility/",
+              "https://www.toromont.com/accessibility/",
+              this.props.lang
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="policy-links" 
+            className="policy-links"
           >
-            {outputEnFr(
-              "Accessibility",
-              "Accessibilité",
-              this.props.lang
-            )}
+            {outputEnFr("Accessibility", "Accessibilité", this.props.lang)}
           </a>
         </div>
         <ScrollTopButton />
       </footer>
-      
     );
   }
 }

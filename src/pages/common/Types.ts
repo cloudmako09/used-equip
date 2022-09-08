@@ -25,6 +25,7 @@ export type searchFilters = {
   // dealerName: string | null;
   certifiedOnly: boolean;
   battlefieldInventory: boolean;
+  consignmentOnly: boolean;
   rentalFleetAvailability: boolean;
   rentalFleetWithImages: boolean;
   viewFaves: boolean;
@@ -72,6 +73,8 @@ export type Type_jsonModelDetails = {
   city: string;
   "postal-code": string;
   state: string;
+  sku: string;
+  "inspection-link": string;
   country: string;
   link: string;
   rating: string;
@@ -119,3 +122,14 @@ export type Type_jsonModelDetails = {
   videos;
   comments: string | null;
 };
+
+export interface InspectionReportData {
+  enterDate: string;
+  inspectionId: number;
+  items: {
+    color: string;
+    name: string;
+    value: string;
+  }[];
+  name: string;
+}

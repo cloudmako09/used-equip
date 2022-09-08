@@ -1,0 +1,302 @@
+@import "../css/variables.scss";
+
+body.jobsite-theme {
+  // General
+  button,
+  .btn {
+    transition: 0.2s;
+    border-radius: 0;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  // Nav
+  .badge {
+    color: $js-green;
+  }
+  #prenav {
+    background-color: $grey;
+  }
+  span {
+    &.gtlist {
+      background: $js-green;
+      &:hover {
+        background: $js-hover-green;
+      }
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .nav-container {
+      background-color: $grey;
+    }
+    .langswitcher {
+      border-bottom: 1px solid $white;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .h-menu .navbar-right li ul.dropdown-menu li > a {
+      transition: 0.2s;
+      &:hover {
+        background: $js-green;
+        color: $grey;
+      }
+    }
+    a {
+      &.currentlang {
+        color: $js-green;
+      }
+    }
+  }
+  // Home
+  &.pgHome {
+    input {
+      &#home-mainsearch,
+      &.form-control {
+        border-radius: 0 !important;
+      }
+      &#home-mainsearch {
+        color: $grey;
+      }
+    }
+    p {
+      &.morefilterslink {
+        transition: 0.2s;
+        i {
+          color: $js-green;
+        }
+      }
+    }
+    .searchFoundText {
+      span {
+        color: $white;
+        @media screen and (max-width: 992px) {
+          color: $grey;
+        }
+      }
+    }
+    #home-introsectionwrap {
+      .find-btn {
+        background: $js-green;
+        border: $js-green;
+        border-radius: 0;
+        border-bottom: none;
+        &:hover {
+          border-bottom: none;
+          background: $js-hover-green;
+        }
+      }
+    }
+    #home-introsectionwrap,
+    #sectionFamilyList {
+      background-color: none;
+      color: $white;
+      &::after {
+        border-top-color: $primary-red;
+      }
+    }
+    .wehaveitall {
+      background-color: $js-green !important;
+      color: $grey !important;
+      &::after {
+        border-top-color: $js-green !important;
+      }
+    }
+    #sectionFamilyList {
+      background-color: $grey;
+
+      .homeequiplink {
+        text-align: center;
+        font-size: 14px;
+      }
+
+      h2 {
+        color: $js-green;
+      }
+
+      @media screen and (min-width: 992px) {
+        margin-top: -103px;
+      }
+    }
+    #ironclad-section,
+    #sectionFamilyList {
+      @media screen and (max-width: 992px) {
+        padding: 40px 0px 40px 0px;
+      }
+      @media screen and (min-width: 992px) {
+        padding: 100px 0px 100px 0px;
+      }
+    }
+    #ironclad-section {
+      background: none;
+      background-color: $js-green;
+    }
+  }
+  // Page Listing / Page Detail
+  &.pgListing,
+  &.pgDetail {
+    // Hide horizontal scroll bar on Google Form
+    iframe {
+      overflow: hidden;
+      height: 1630px;
+      border: none;
+    }
+  }
+  // Page Listing
+  &.pgListing {
+    .btn.top-phone {
+      font-size: 25px;
+      font-weight: 800;
+      color: $js-dark-green;
+      &:hover {
+        color: #333 !important;
+        background-color: $js-green;
+        border-color: $js-green;
+        box-shadow: none;
+      }
+    }
+    .btn-top-email {
+      background-color: $js-green;
+      &:hover {
+        background-color: $grey !important;
+        border-color: $js-green !important;
+        color: $white !important;
+      }
+      span {
+        font-weight: 800;
+      }
+    }
+    .product-keyword,
+    .input-group-addon {
+      border-radius: 0;
+    }
+    #list-sorter {
+      label {
+        padding-right: 5px;
+      }
+    }
+    .product-price {
+      p {
+        color: black;
+        font-weight: 800 !important;
+        font-size: 20px !important;
+      }
+    }
+    #mosaic {
+      transition: 0.2s;
+      .product-wrapper {
+        transition: 0.2s;
+        &:hover {
+          transition: 0.2s;
+          background-color: $white;
+          // transform: translate3D(0, -5px, 0);
+          box-shadow: 0 10px 20px #c7c7c7;
+          border: 1px solid $js-green;
+        }
+      }
+    }
+    .rc-slider-track {
+      background-color: $js-green;
+    }
+    .favestar {
+      i {
+        &:hover {
+          color: $js-green;
+        }
+      }
+    }
+  }
+  // Page Detail
+  &.pgDetail {
+    .current-avail {
+      .green {
+        color: $js-dark-green;
+      }
+      p {
+        &#current-avail {
+          font-size: 28px;
+          font-weight: bold;
+        }
+      }
+    }
+    .breadcrumbs a,
+    .backtolink {
+      color: $js-dark-green;
+    }
+    .btn.top-phone {
+      color: $js-dark-green;
+      &:hover {
+        background-color: $js-green !important;
+        border-color: $js-green !important;
+      }
+    }
+    .btn-primary {
+      background-color: $js-green !important;
+    }
+  }
+  // Footer
+  .footer {
+    p {
+      &.havequestions {
+        color: $js-green;
+      }
+      &.footer-phone {
+        a {
+          color: $white;
+        }
+      }
+    }
+  }
+  // Formspree Form
+  .formspree-form {
+    input,
+    select {
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: $js-green;
+      color: $grey;
+      border: none;
+      font-weight: 800;
+      &:focus,
+      &:hover {
+        background-color: $grey;
+        color: $white;
+      }
+    }
+  }
+  // Inspection Report
+  .periodic-annual-inspection-report {
+    .inspection-header {
+      padding-bottom: 10px;
+      strong {
+        margin-right: 5px;
+        &#id {
+          margin-left: 15px;
+        }
+      }
+    }
+    .accordion__button {
+      background: #c0d93e;
+      transition: 0.2s;
+      &:focus,
+      &:hover {
+        background: #333;
+        color: #fff;
+      }
+    }
+    .table {
+      margin-bottom: 0px;
+    }
+    .table > thead > tr > th {
+      border-bottom: none;
+      font-style: italic;
+    }
+    tr {
+      border-bottom: 0.5px solid #ddd;
+    }
+    td {
+      border-top: none !important;
+      line-height: 1.8;
+    }
+  }
+}

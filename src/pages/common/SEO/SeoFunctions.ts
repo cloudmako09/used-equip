@@ -3,6 +3,7 @@ import * as Helpers from "../HelperFunctions";
 import * as Types from "../../common/Types";
 import { PageTypes } from "../../../pages/common/Constants";
 import SEO_BFE from "./SEOcontentBFE";
+import SEO_JOBSITE from "./SEOcontentJOBSITE";
 import SEO_TCAT from "./SEOcontentTCAT";
 import _ from "lodash";
 
@@ -183,13 +184,16 @@ function getUrlParamsFromFilters(
     allparams += "&certified=1";
   }
   if (filters.battlefieldInventory) {
-    allparams += "&certified=2";
+    allparams += "&bfeinv=1";
+  }
+  if (filters.consignmentOnly) {
+    allparams += "&consignment=1";
   }
   if (filters.rentalFleetAvailability) {
-    allparams += "&certified=3";
+    allparams += "&available=1";
   }
   if (filters.rentalFleetWithImages) {
-    allparams += "&certified=4";
+    allparams += "&images=1";
   }
   if (filters.sortBy && filters.sortBy !== Constants.SORT.YEAR_HI) {
     //ignore year desc because its the default
@@ -239,11 +243,13 @@ export function getMetaTitle(
   includeSiteName?: boolean
 ) {
   let companyName = Constants.isEnvironmentBFE_or_BFERENTAL
-    ? "Battlefield Equipment Rentals"
+    ? "Battlefield Equipment Rentals" : Constants.isEnvironmentJOBSITE ? "Jobsite Industrial Rental Services"
     : "Toromont Cat";
 
   if (lang === "fr" && Constants.isEnvironmentBFE_or_BFERENTAL) {
     companyName = "Location d’équipement Battlefield";
+  } else if (lang === "fr" && Constants.isEnvironmentJOBSITE) {
+    companyName = "Location d'outils industriels Jobsite"
   }
 
   let newMetaTitle;
@@ -264,8 +270,8 @@ export function getMetaTitle(
     } else {
       newMetaTitle =
         lang === "fr"
-          ? "Équipement lourd usagé | " + companyName
-          : "Used Heavy Equipment | " + companyName;
+          ? "Outils & Équipements d'Occasion | " + companyName
+          : "Used Tools & Equipment | " + companyName;
     }
   } else {
     info = lang === "fr" ? info : "Used " + info;
@@ -328,7 +334,7 @@ export const getSeoContentByCatCode = (
     catcode = "products";
   }
 
-  const SEO = Constants.isEnvironmentBFE_or_BFERENTAL ? SEO_BFE : SEO_TCAT;
+  const SEO = Constants.isEnvironmentBFE_or_BFERENTAL ? SEO_BFE : Constants.isEnvironmentJOBSITE ? SEO_JOBSITE : SEO_TCAT;
 
   if (catcode) {
     let seoData = SEO.find((o) => o["CatCodeSlug"] === catcode);

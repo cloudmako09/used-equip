@@ -5,6 +5,7 @@ import { ConverterBoolean } from "../../common/HelperFunctions";
 import {
   isEnvironmentBFE,
   isEnvironmentBFERENTAL,
+  isEnvironmentJOBSITE,
 } from "../../common/Constants";
 
 type Props_CheckboxCertified = {
@@ -60,6 +61,20 @@ const CheckboxCertified = (props: Props_CheckboxCertified) => {
     props.onSearchFilterChange(updatedSearchFilters);
   };
 
+  // Consignment only product toggle
+  const onConsignmentChange = (e) => {
+    const newConsignmentValue: boolean = e.target.checked;
+
+    const updatedSearchFilters: Types.searchFilters = {
+      ...props.filters,
+      consignmentOnly: newConsignmentValue,
+    };
+
+    console.log("New Consignment Value:" + newConsignmentValue);
+
+    props.onSearchFilterChange(updatedSearchFilters);
+  };
+
   return (
     <>
       <div className="check-certified">
@@ -70,7 +85,9 @@ const CheckboxCertified = (props: Props_CheckboxCertified) => {
                 className="certifiedOnlyCheck"
                 onChange={(e) => onBattlefieldChange(e)}
                 type="checkbox"
-                checked={ConverterBoolean(props.filters.battlefieldInventory)}
+                defaultChecked={ConverterBoolean(
+                  props.filters.battlefieldInventory
+                )}
               />
               <span
                 className="data-fr"
@@ -90,7 +107,7 @@ const CheckboxCertified = (props: Props_CheckboxCertified) => {
                 className="certifiedOnlyCheck"
                 onChange={(e) => onCertifiedChange(e)}
                 type="checkbox"
-                checked={ConverterBoolean(props.filters.certifiedOnly)}
+                defaultChecked={ConverterBoolean(props.filters.certifiedOnly)}
               />
               <span
                 className="data-fr"
@@ -103,8 +120,28 @@ const CheckboxCertified = (props: Props_CheckboxCertified) => {
                 )}
               </span>
             </label>
+            <br></br>
+            <br></br>
+            <label className="checkbox-inline">
+              <input
+                className="certifiedOnlyCheck"
+                onChange={(e) => onConsignmentChange(e)}
+                type="checkbox"
+                defaultChecked={ConverterBoolean(props.filters.consignmentOnly)}
+              />
+              <span
+                className="data-fr"
+                data-fr="Voir seulement les unités certifiées"
+              >
+                {outputEnFr(
+                  "Show Consignment Inventory Only",
+                  "Afficher Uniquement L'inventaire de Consignation",
+                  props.lang
+                )}
+              </span>
+            </label>
           </Fragment>
-        ) : isEnvironmentBFERENTAL ? (
+        ) : isEnvironmentBFERENTAL || isEnvironmentJOBSITE ? (
           <Fragment>
             <label className="checkbox-inline">
               <input

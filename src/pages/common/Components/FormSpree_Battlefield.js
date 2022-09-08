@@ -21,42 +21,60 @@ export default class FormSpree extends React.Component {
           <input
             type="hidden"
             name="_cc"
-            value="david.white@toromont.com,Elizabeth.Willis@toromont.com,Will.Bradley@Toromont.com"
+            value="david.white@toromont.com,CCELeads@Toromont.com"
           />
           <div className="row">
             <div className="col-lg-6">
               <label>First Name</label>
-              <label id="formspree"><input type="text" name="first name" aria-label="first name" /></label>
+              <label id="formspree">
+                <input type="text" name="first name" aria-label="first name" />
+              </label>
             </div>
             <div className="col-lg-6">
               <label>Last Name</label>
-              <label id="formspree"><input type="text" name="last name" aria-label="last name" /></label>
+              <label id="formspree">
+                <input type="text" name="last name" aria-label="last name" />
+              </label>
             </div>
           </div>
           <div className="row">
             <div className="col-lg-6">
               <label>Company Name</label>
-              <label id="formspree"><input type="text" name="company name" aria-label="company name" /></label>
+              <label id="formspree">
+                <input
+                  type="text"
+                  name="company name"
+                  aria-label="company name"
+                />
+              </label>
             </div>
             <div className="col-lg-6">
               <label>Email</label>
-              <label id="formspree"><input type="email" name="email" aria-label="email" /></label>
+              <label id="formspree">
+                <input type="email" name="email" aria-label="email" />
+              </label>
             </div>
           </div>
           <div className="row">
             <div className="col-lg-6">
               <label>Cell Phone Number</label>
-              <label id="formspree"><input type="text" name="phone" aria-label="phone" /></label>
+              <label id="formspree">
+                <input type="text" name="phone" aria-label="phone" />
+              </label>
             </div>
             <div className="col-lg-6">
               <label>Address</label>
-              <label id="formspree"><input type="text" name="address" aria-label="address" /></label>
+              <label id="formspree">
+                <input type="text" name="address" aria-label="address" />
+              </label>
             </div>
           </div>
           <div className="row">
             <div className="col-lg-6">
               <label>City</label>
-              <label id="formspree"><input type="text" name="city" aria-label="city" /></label>
+              <label id="formspree">
+                <input type="text" name="city" aria-label="city" />
+              </label>
             </div>
             <div className="col-lg-6">
               <label>Province</label>
@@ -76,10 +94,16 @@ export default class FormSpree extends React.Component {
           <div className="row">
             <div className="col-lg-6">
               <label>Machine or Services Interested In</label>
-              <label id="formspree"><input type="text" name="interested in" aria-label="interested in" /></label>
+              <label id="formspree">
+                <input
+                  type="text"
+                  name="interested in"
+                  aria-label="interested in"
+                />
+              </label>
             </div>
           </div>
-          
+
           {status === "SUCCESS" ? (
             <p>
               Thanks for your submission! We will be in touch with you shortly.

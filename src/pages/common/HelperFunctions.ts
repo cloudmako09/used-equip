@@ -23,6 +23,7 @@ export const outputEnFr = (textEn, textFr, lang: string) => {
   return lang === "fr" ? textFr : textEn;
 };
 
+// All coming from URL
 export const getJsonUrl = (pageType: number, lang: string, serial: string) => {
   let jsonUrl =
     "https://tws.toromont.ca/ToromontCAT/ServiceHub/PublicInfo/equipment/used/N000";
@@ -39,11 +40,25 @@ export const getJsonUrl = (pageType: number, lang: string, serial: string) => {
       "https://tws.toromont.ca/ToromontCAT/ServiceHub/PublicInfo/equipment/used/N001/selloff";
   }
 
+  if (Constants.isEnvironmentJOBSITE) {
+    //change json url if Jobsite
+    jsonUrl =
+      "https://tws.toromont.ca/ToromontCAT/ServiceHub/PublicInfo/equipment/used/N001/selloff/jobsite";
+  }
+
   if (pageType === Constants.PageTypes.Details) {
     //Details page adds serial as parameter to json
     // 
     if (Constants.isEnvironmentBFERENTAL) {
-      jsonUrl += "/detail?serialNumber=" + serial;
+      jsonUrl += "/detail?equipmentId=" + serial;
+    } else if (Constants.isEnvironmentJOBSITE) {
+      // The single product API details did not live under "/jobsite/" in the API's URL. It lives under "/selloff/", without "/jobsite/".
+      // Split off the URL from /jobsite onward into two arrays, join up the first split array with both "/" and the second array which was empty, then join up the brand new URL with the unique serial.
+      let urlSplit = jsonUrl.split('/jobsite');
+      let SingProdURL = urlSplit[0].concat("/" + urlSplit[1]);
+      let newURL = SingProdURL.concat("detail?equipmentId=" + serial);
+
+      return newURL;
     } else {
       jsonUrl += "/equipment/" + serial;
     }
@@ -51,6 +66,10 @@ export const getJsonUrl = (pageType: number, lang: string, serial: string) => {
 
   let param = "?";
   if (pageType === Constants.PageTypes.Details && Constants.isEnvironmentBFERENTAL) {
+    param = "&";
+  }
+
+  if (pageType === Constants.PageTypes.Details && Constants.isEnvironmentJOBSITE) {
     param = "&";
   }
 
@@ -86,6 +105,8 @@ export function getPhoneNumber(currentClass): string {
     return Constants.PHONENUMBERS.BFE;
   } else if (Constants.isEnvironmentBFERENTAL) {
     return Constants.PHONENUMBERS.BFERENTAL;
+  } else if (Constants.isEnvironmentJOBSITE) {
+    return Constants.PHONENUMBERS.JOBSITE;
   } else if (currentClass === Constants.CLASS_POWER) {
     //power systems phone number
     return Constants.PHONENUMBERS.POWER_TCAT;
@@ -600,9 +621,10 @@ export const getSearchFiltersFromUrl = (
   hoursMax: urlParams[Constants.PARAMS.HOURS_MAX],
   city: urlParams[Constants.PARAMS.CITY],
   certifiedOnly: urlParams[Constants.PARAMS.CERTIFIED] === "1",
-  battlefieldInventory: urlParams[Constants.PARAMS.CERTIFIED] === "2",
-  rentalFleetAvailability: urlParams[Constants.PARAMS.CERTIFIED] === "3",
-  rentalFleetWithImages: urlParams[Constants.PARAMS.CERTIFIED] === "4",
+  battlefieldInventory: urlParams[Constants.PARAMS.BFE_INV] === "1",
+  consignmentOnly: urlParams[Constants.PARAMS.CONSIGNMENT] === "1",
+  rentalFleetAvailability: urlParams[Constants.PARAMS.AVAILABLE] === "1",
+  rentalFleetWithImages: urlParams[Constants.PARAMS.IMAGES] === "1",
   viewFaves:
     category === Constants.URLFAVES_EN || category === Constants.URLFAVES_FR,
   viewDeals: category === "deals",

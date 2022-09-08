@@ -273,8 +273,23 @@ const MachineImagesAndInfo = (props: Props_MachineImagesAndInfo) => {
               <span className="data_price_cad">{detailsHtml.itemPriceCA}</span>
             </div>
             {
-              /*Only show US price on BF site*/
+              /*Show US price on BFE sites*/
               Constants.isEnvironmentBFE_or_BFERENTAL && (
+                <div className="price-wrap">
+                  <img
+                    className="flagimg"
+                    src={Constants.IMAGES.FLAG_US}
+                    alt="US $"
+                  />
+                  <span className="data_price_usd">
+                    {detailsHtml.itemPriceUS}
+                  </span>
+                </div>
+              )
+            }
+            {
+              /*Show US price on Jobsite*/
+              Constants.isEnvironmentJOBSITE && (
                 <div className="price-wrap">
                   <img
                     className="flagimg"
@@ -309,7 +324,7 @@ const MachineImagesAndInfo = (props: Props_MachineImagesAndInfo) => {
             props.jsonDataProduct["product-family"] !== "Trench Shoring" &&
             props.jsonDataProduct["product-family"] !== "Welders" &&
             // If product doesn't have model year, show date acquired
-            props.jsonDataProduct["model-year"] === undefined ? (
+            props.jsonDataProduct["year"] === undefined ? (
               <div>
                 {props.jsonDataProduct["acquired-date"] ? (
                   <div>
@@ -326,9 +341,7 @@ const MachineImagesAndInfo = (props: Props_MachineImagesAndInfo) => {
                     <h3>
                       {outputEnFr("Model Year:", "Année modèle:", props.lang)}
                     </h3>
-                    <p className="large">
-                      {props.jsonDataProduct["model-year"]}
-                    </p>
+                    <p className="large">{props.jsonDataProduct["year"]}</p>
                   </div>
                 ) : (
                   ""
@@ -340,7 +353,7 @@ const MachineImagesAndInfo = (props: Props_MachineImagesAndInfo) => {
                 <h3>
                   {outputEnFr("Model Year:", "Année modèle:", props.lang)}
                 </h3>
-                <p className="large">{props.jsonDataProduct["model-year"]}</p>
+                <p className="large">{props.jsonDataProduct["year"]}</p>
               </>
             )}
 
@@ -369,7 +382,7 @@ const MachineImagesAndInfo = (props: Props_MachineImagesAndInfo) => {
                 <h3>
                   {outputEnFr("Model Year:", "Année modèle:", props.lang)}
                 </h3>
-                <p className="large">{props.jsonDataProduct["model-year"]}</p>
+                <p className="large">{props.jsonDataProduct["year"]}</p>
               </div>
             ) : (
               ""

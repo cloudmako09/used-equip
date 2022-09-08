@@ -17,6 +17,7 @@ import {
   isPowerCategory,
 } from "./pages/common/HelperFunctions";
 import Footer_Battlefield from "./pages/common/Components/Footer_Battlefield";
+import Footer_Jobsite from "./pages/common/Components/Footer_Jobsite";
 import Footer_TCAT from "./pages/common/Components/Footer_TCAT";
 import { types_seoData, Type_jsonCategoryGroup } from "./pages/common/Types";
 import ListingsPage from "./pages/listings/ListingsPage";
@@ -330,6 +331,8 @@ class PageWrapper extends React.PureComponent<
   getFooterComponent = () => {
     return Constants.isEnvironmentBFE_or_BFERENTAL ? (
       <Footer_Battlefield lang={this.getParamLanguage()} />
+    ) : Constants.isEnvironmentJOBSITE ? (
+      <Footer_Jobsite lang={this.getParamLanguage()} />
     ) : (
       <Footer_TCAT
         lang={this.getParamLanguage()}

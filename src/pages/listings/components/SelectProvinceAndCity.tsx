@@ -119,23 +119,28 @@ export default class SelectProvinceAndCity extends React.PureComponent<Props_Sel
     Object.keys(UsedDataProvinces).forEach(function (x) {
       if (UsedDataProvinces[x][0] == null) {
         return;
-      } 
+      }
       const curProv = saferString(UsedDataProvinces[x][0].state);
-      let provinceDisplayName = getProvinceName(curProv, curLang);//get different display name if abbreviation OR translation needed
+      let provinceDisplayName = getProvinceName(curProv, curLang); //get different display name if abbreviation OR translation needed
 
-      if (isEnvironmentTCAT && (curProv === "IL" || provinceDisplayName === "Other")) {
+      if (
+        isEnvironmentTCAT &&
+        (curProv === "IL" || provinceDisplayName === "Other")
+      ) {
         return;
       }
-      if (list_provinces.findIndex(o => o.displayName === provinceDisplayName) < 0){//Add to array if not includes display name already
+      if (
+        list_provinces.findIndex((o) => o.displayName === provinceDisplayName) <
+        0
+      ) {
+        //Add to array if not includes display name already
         list_provinces.push({
           value: curProv,
           displayName: provinceDisplayName,
         });
       }
-     
     });
     return list_provinces;
-    
   };
 
   getCitySelectOptions = () => {
@@ -180,29 +185,31 @@ export default class SelectProvinceAndCity extends React.PureComponent<Props_Sel
   render() {
     return (
       <>
-        <label htmlFor="product-province">Province:</label>
-        <select
-          id="product-province"
-          name="product-province"
-          onChange={(e) => this.onProvinceSelectChange(e)}
-          value={saferString(this.props.filters.province)}
-        >
-          {this.getProvincesSelectOptions()}
-        </select>
+        <>
+          <label htmlFor="product-province">Province:</label>
+          <select
+            id="product-province"
+            name="product-province"
+            onChange={(e) => this.onProvinceSelectChange(e)}
+            value={saferString(this.props.filters.province)}
+          >
+            {this.getProvincesSelectOptions()}
+          </select>
 
-        <label htmlFor="product-city">
-          {outputEnFr("City:", "Ville:", this.props.lang)}
-        </label>
-        <select
-          id="product-city"
-          name="product-city"
-          onChange={(e) => this.onCitySelectboxChange(e)}
-          value={saferString(this.props.filters.city)}
-        >
-          {this.getCitySelectOptions()}
-        </select>
+          <label htmlFor="product-city">
+            {outputEnFr("City:", "Ville:", this.props.lang)}
+          </label>
+          <select
+            id="product-city"
+            name="product-city"
+            onChange={(e) => this.onCitySelectboxChange(e)}
+            value={saferString(this.props.filters.city)}
+          >
+            {this.getCitySelectOptions()}
+          </select>
 
-        <br />
+          <br />
+        </>
       </>
     );
   }

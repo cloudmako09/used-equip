@@ -1,7 +1,14 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from "react";
 import { Link } from "react-router-dom";
-import * as Constants from "../Constants";
+import {
+  isEnvironmentBFERENTAL,
+  isEnvironmentBFE_or_BFERENTAL,
+  isEnvironmentJOBSITE,
+  IMAGES,
+  URLFAVES_EN,
+  URLFAVES_FR,
+} from "../Constants";
 import NavItems_TCAT from "./Components/NavItems_TCAT";
 import NavItems_BFE from "./Components/NavItems_BFE";
 import LanguageSwitcher from "./Components/LanguageSwitcher";
@@ -120,24 +127,31 @@ class NavigationHeader extends React.PureComponent<
   getLogo =
     this.props.lang === "fr" ? (
       <Link to="/fr">
-        {Constants.isEnvironmentBFE_or_BFERENTAL ? (
+        {isEnvironmentBFE_or_BFERENTAL ? (
           <img
-            src={Constants.IMAGES.LOGO_BFE_FR}
+            src={IMAGES.LOGO_BFE_FR}
             alt="Location d’équipement Battlefield"
           />
+        ) : isEnvironmentJOBSITE ? (
+          <img
+            src={IMAGES.LOGO_JOBSITE}
+            alt="Location d'outils industriels Jobsite"
+          />
         ) : (
-          <img src={Constants.IMAGES.LOGO_TCAT} alt="Toromont Cat" />
+          <img src={IMAGES.LOGO_TCAT} alt="Toromont Cat" />
         )}
       </Link>
     ) : (
       <Link to="/">
-        {Constants.isEnvironmentBFE_or_BFERENTAL ? (
+        {isEnvironmentBFE_or_BFERENTAL ? (
+          <img src={IMAGES.LOGO_BFE} alt="Battlefield Equipment Rentals" />
+        ) : isEnvironmentJOBSITE ? (
           <img
-            src={Constants.IMAGES.LOGO_BFE}
-            alt="Battlefield Equipment Rentals"
+            src={IMAGES.LOGO_JOBSITE}
+            alt="Jobsite Industrial Rental Services"
           />
         ) : (
-          <img src={Constants.IMAGES.LOGO_TCAT} alt="Toromont Cat" />
+          <img src={IMAGES.LOGO_TCAT} alt="Toromont Cat" />
         )}
       </Link>
     );
@@ -145,8 +159,8 @@ class NavigationHeader extends React.PureComponent<
   render() {
     console.log("Render NavigationHeader");
     const isViewingFaves =
-      this.props.paramCategory === Constants.URLFAVES_EN ||
-      this.props.paramCategory === Constants.URLFAVES_FR;
+      this.props.paramCategory === URLFAVES_EN ||
+      this.props.paramCategory === URLFAVES_FR;
     return (
       <header id="header-wrap">
         <div id="header" className="container">
@@ -175,7 +189,7 @@ class NavigationHeader extends React.PureComponent<
 
                   {/*LANG SWITCHER- MOBILE ONLY*/}
                   <li className={mobileOnlyClass}>
-                    {Constants.isEnvironmentBFERENTAL ? (
+                    {isEnvironmentBFERENTAL ? (
                       ""
                     ) : (
                       <LanguageSwitcher
@@ -196,7 +210,7 @@ class NavigationHeader extends React.PureComponent<
                     <FavouritesLinkMobile lang={this.props.lang} />
                   </li>
 
-                  {Constants.isEnvironmentBFE_or_BFERENTAL ? (
+                  {isEnvironmentBFE_or_BFERENTAL || isEnvironmentJOBSITE ? (
                     <NavItems_BFE
                       lang={this.props.lang}
                       jsonDataGroups={this.props.jsonDataGroups}

@@ -3,6 +3,7 @@ import { outputEnFr } from "../HelperFunctions";
 import ContactFormToromontCatHubspot from "../Components/ContactForm_TCAT_hubspot";
 import ContactFormBattlefield from "../Components/ContactForm_Battlefield";
 import ContactFormBattlefieldRentalFleet from "../Components/ContactForm_BattlefieldRentalFleet";
+import ContactFormJobsite from "../Components/ContactForm_Jobsite";
 import * as Constants from "../../common/Constants";
 
 export type Props_CTASection = {
@@ -18,104 +19,106 @@ export type Props_CTASection = {
   ctaImageAltText?: string;
 };
 
-export default class CTASection extends React.PureComponent<Props_CTASection> {
-  contactFormComponent() {
+const CTASection = ({
+  lang,
+  curCategory,
+  categoryClass,
+  heading,
+  subheading,
+  submitBtnText,
+  viewDeals,
+  modelName,
+  ctaImage,
+  ctaImageAltText,
+}: Props_CTASection) => {
+  const contactFormComponent = () => {
     if (Constants.isEnvironmentBFE) {
-      return <ContactFormBattlefield lang={this.props.lang} />;
+      return <ContactFormBattlefield lang={lang} />;
     } else if (Constants.isEnvironmentBFERENTAL) {
-      return <ContactFormBattlefieldRentalFleet lang={this.props.lang} />;
+      return <ContactFormBattlefieldRentalFleet lang={lang} />;
+    } else if (Constants.isEnvironmentJOBSITE) {
+      return <ContactFormJobsite lang={lang} />;
     } else {
       return (
         <ContactFormToromontCatHubspot
-          lang={this.props.lang}
-          submitBtnText={this.getSubmitBtnTxt()}
-          categoryClass={this.props.categoryClass}
-          curCategory={this.props.curCategory}
-          modelName={this.props.modelName}
+          lang={lang}
+          submitBtnText={getSubmitBtnTxt()}
+          categoryClass={categoryClass}
+          curCategory={curCategory}
+          modelName={modelName}
         />
       );
     }
-  }
+  };
 
-  getHeading() {
-    let headingText = outputEnFr(
-      "Find out more",
-      "En savoir plus",
-      this.props.lang
-    );
-    if (this.props.viewDeals) {
+  const getHeading = () => {
+    let headingText = outputEnFr("Find out more", "En savoir plus", lang);
+    if (viewDeals) {
       headingText = outputEnFr(
         "CONNECT WITH AN EXPERT",
         "COMMUNIQUEZ AVEC UN EXPERT",
-        this.props.lang
+        lang
       );
     }
-    return this.props.heading || headingText;
-  }
+    return heading || headingText;
+  };
 
-  getSubHeading() {
+  const getSubHeading = () => {
     let subheadTxt = outputEnFr(
       "For more information or to request a quote, please complete the form below.",
       "Pour plus d'informations ou pour demander une soumission, remplissez le formulaire.",
-      this.props.lang
+      lang
     );
-    if (this.props.viewDeals) {
+    if (viewDeals) {
       subheadTxt = outputEnFr(
         "To learn more about any of our used machines, connect with us using the form below.",
         "Pour en savoir plus sur l'une de nos machines usagées, contactez-nous en utilisant le formulaire ci-dessous.",
-        this.props.lang
+        lang
       );
     }
 
-    return this.props.subheading || subheadTxt;
-  }
+    return subheading || subheadTxt;
+  };
 
-  getSubmitBtnTxt() {
-    let submitBtnText = outputEnFr("Submit", "Soumettre", this.props.lang);
-    if (this.props.viewDeals) {
+  const getSubmitBtnTxt = () => {
+    let submitBtnText = outputEnFr("Submit", "Soumettre", lang);
+    if (viewDeals) {
       submitBtnText = outputEnFr(
         "CONNECT WITH AN EXPERT",
         "COMMUNIQUEZ AVEC UN EXPERT",
-        this.props.lang
+        lang
       );
     }
 
-    return this.props.submitBtnText || submitBtnText;
-  }
-
-  render() {
-    return (
-      <div id="details_contact_wrapper" className="container ">
-        <div id="form" className="row detailsection_contact">
-          <div id="contactform" className="col-xs-12">
-            <p className="heading-contact text-center">{this.getHeading()}</p>
-            <p className="subhead-contact text-center">
-              {this.getSubHeading()}
-            </p>
-            <div className="row">
-              <div className="col-md-8 col-md-offset-2 form-container">
-                {this.contactFormComponent()}
-              </div>
+    return submitBtnText || submitBtnText;
+  };
+  return (
+    <div id="details_contact_wrapper" className="container ">
+      <div id="form" className="row detailsection_contact">
+        <div id="contactform" className="col-xs-12">
+          <p className="heading-contact text-center">{getHeading()}</p>
+          <p className="subhead-contact text-center">{getSubHeading()}</p>
+          <div className="row">
+            <div className="col-md-8 col-md-offset-2 form-container">
+              {contactFormComponent()}
             </div>
           </div>
         </div>
-        {Constants.isEnvironmentTCAT && (
-          <div className="col-xs-12 text-center ctaImgWrap">
-            <img
-              className="machineImgFooter"
-              alt={
-                this.props.ctaImageAltText ||
-                outputEnFr(
-                  "Used Heavy Equipment",
-                  "Équipement lourd usagé",
-                  this.props.lang
-                )
-              }
-              src={this.props.ctaImage || Constants.IMAGES.CTA_SECTION_IMAGE}
-            />{" "}
-          </div>
-        )}
       </div>
-    );
-  }
-}
+      {Constants.isEnvironmentTCAT && (
+        <div className="col-xs-12 text-center ctaImgWrap">
+          <img
+            className="machineImgFooter"
+            alt={
+              ctaImageAltText ||
+              outputEnFr("Used Heavy Equipment", "Équipement lourd usagé", lang)
+            }
+            src={ctaImage || Constants.IMAGES.CTA_SECTION_IMAGE}
+          />{" "}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default CTASection;

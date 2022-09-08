@@ -1,5 +1,8 @@
 import React from "react";
-import { isEnvironmentBFERENTAL } from "../../common/Constants";
+import {
+  isEnvironmentBFERENTAL,
+  isEnvironmentJOBSITE,
+} from "../../common/Constants";
 import { outputEnFr, getPhoneNumber } from "../../common/HelperFunctions";
 import { Type_jsonModelDetails } from "../../common/Types";
 import FaveAddRemoveButton from "../components/FaveAddRemoveButton";
@@ -65,6 +68,19 @@ const DetailColumn2 = (props: Props_DetailColumn2) => {
           <i className="fa fa-phone" aria-hidden="true"></i> &nbsp;{" "}
           {getPhoneNumber(props.currentCatClass)}
         </a>
+        {!isEnvironmentJOBSITE ? (
+          <>
+            <p className="op-hours">
+              {outputEnFr(
+                "Operating Hours: Monday to Friday 8:00am – 5:00pm",
+                "Heures d’ouverture : du lundi au vendredi de 8h00 à 17h00",
+                props.lang
+              )}
+            </p>
+          </>
+        ) : (
+          ""
+        )}
         {/* onclick="gtag('event', 'Click Phone', {'event_category': 'Contact', 'event_label': document.title})" */}
 
         <a href="#form" className="btn btn-primary hide-print">
@@ -98,7 +114,7 @@ const DetailColumn2 = (props: Props_DetailColumn2) => {
         ) : null}
 
         <br />
-        {isEnvironmentBFERENTAL ? (
+        {isEnvironmentBFERENTAL || isEnvironmentJOBSITE ? (
           ""
         ) : (
           <>

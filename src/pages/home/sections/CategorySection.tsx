@@ -37,6 +37,21 @@ import skidsteerloadersImage from "../../../images/categoryimagesbferental/skid-
 import trenchshoringImage from "../../../images/categoryimagesbferental/trench-shoring.jpg";
 import weldersImage from "../../../images/categoryimagesbferental/welders.jpg";
 
+// Jobsite category images
+import hoistingImage from "../../../images/categoryimagesjobsite/hoisting-rigging.jpg";
+import materialImage from "../../../images/categoryimagesjobsite/material-handling-machinery-moving.jpg";
+import jacksImage from "../../../images/categoryimagesjobsite/jacks.jpg";
+import pipeBendingImage from "../../../images/categoryimagesjobsite/pipe-bending.jpg";
+import pipeFabImage from "../../../images/categoryimagesjobsite/pipe-fabrication.jpg";
+import wireImage from "../../../images/categoryimagesjobsite/wire-cable-handling.jpg";
+import electricToolsImage from "../../../images/categoryimagesjobsite/electric-tools.jpg";
+import airToolsImage from "../../../images/categoryimagesjobsite/air-tools.jpg";
+import confinedImage from "../../../images/categoryimagesjobsite/confined-space.jpg";
+import storageImage from "../../../images/categoryimagesjobsite/storage-boxes.jpg";
+import torqueImage from "../../../images/categoryimagesjobsite/torqueing-bolting.jpg";
+import weldingImage from "../../../images/categoryimagesjobsite/welding-power-distribution.jpg";
+import miscJobsiteImage from "../../../images/categoryimagesjobsite/misc.jpg";
+
 type Props_CategorySection = {
   lang: string;
   jsonDataGroups;
@@ -53,321 +68,6 @@ const CategorySection = (props: Props_CategorySection) => {
   categoryList[2] = [];
   categoryList[3] = [];
 
-  const getDefaultLinks = () => {
-    // So that some links are shown while loading API, helps with ux and SEO
-    let categoryList: Object = [];
-    categoryList[0] = [];
-    categoryList[1] = [];
-    categoryList[2] = [];
-    categoryList[3] = [];
-    if (Constants.isEnvironmentTCAT && props.lang === "en") {
-      categoryList[0][0] = getLink(
-        "articulated-trucks-tombereaux-articules",
-        "Articulated Trucks"
-      );
-      categoryList[0][1] = getLink(
-        "backhoe-loaders-chargeuses-pelleteuses",
-        "Backhoe Loaders"
-      );
-      categoryList[0][2] = getLink("compactors-compacteurs", "Compactors");
-      categoryList[0][3] = getLink(
-        "aggregate-granulats",
-        "Crushers and Screens"
-      );
-      categoryList[0][4] = getLink(
-        "excavators-pelles-hydrauliques",
-        "Excavators"
-      );
-
-      categoryList[1][0] = getLink(
-        "forest-products-materiel-forestier",
-        "Forest Products"
-      );
-      categoryList[1][1] = getLink(
-        "mining-equipment-machines-pour-mines",
-        "Mining Equipment"
-      );
-      categoryList[1][2] = getLink("motor-graders-niveleuses", "Motor Graders");
-      categoryList[1][3] = getLink(
-        "off-highway-trucks-tractors-tombereaux-rigides-tracteurs",
-        "Off-highway Trucks / Tractors"
-      );
-      categoryList[1][4] = getLink(
-        "on-highway-trucks-camions-routiers",
-        "On-highway Trucks"
-      );
-
-      categoryList[2][0] = getLink(
-        "paving-products-materiel-routier",
-        "Paving Products"
-      );
-      categoryList[2][1] = getLink(
-        "telehandlers-chargeurs-a-bras-telescopique",
-        "Telehandlers"
-      );
-      categoryList[2][2] = getLink(
-        "track-type-loaders-crawlers-chargeurs-sur-chaines",
-        "Track Type Loaders / Crawlers"
-      );
-      categoryList[2][3] = getLink(
-        "track-type-tractors-dozers-tracteurs-sur-chaines",
-        "Track Type Tractors / Dozers"
-      );
-      categoryList[2][4] = getLink(
-        "wheel-loaders-integrated-toolcarriers-chargeurs-sur-pneus-chargeurs-industriels",
-        "Wheel Loaders / Integrated Toolcarriers"
-      );
-    } else if (Constants.isEnvironmentTCAT && props.lang === "fr") {
-      categoryList[0][0] = getLink(
-        "on-highway-trucks-camions-routiers",
-        "Camions Routiers"
-      );
-      categoryList[0][1] = getLink(
-        "telehandlers-chargeurs-a-bras-telescopique",
-        "Chargeurs à Bras Télescopique"
-      );
-      categoryList[0][2] = getLink(
-        "track-type-loaders-crawlers-chargeurs-sur-chaines",
-        "Chargeurs Sur Chaines"
-      );
-      categoryList[0][3] = getLink(
-        "wheel-loaders-integrated-toolcarriers-chargeurs-sur-pneus-chargeurs-industriels",
-        "Chargeurs Sur Pneus / Chargeurs Industriels"
-      );
-      categoryList[0][4] = getLink("compactors-compacteurs", "Compacteurs");
-
-      categoryList[1][0] = getLink(
-        "aggregate-granulats",
-        "Concasseurs et cribles"
-      );
-      categoryList[1][1] = getLink(
-        "mining-equipment-machines-pour-mines",
-        "Équipements miniers"
-      );
-      categoryList[1][2] = getLink(
-        "excavators-pelles-hydrauliques",
-        "Excavatrices"
-      );
-      categoryList[1][3] = getLink("motor-graders-niveleuses", "Niveleuses");
-      categoryList[1][4] = getLink(
-        "paving-products-materiel-routier",
-        "Produits de pavage"
-      );
-
-      categoryList[2][0] = getLink(
-        "forest-products-materiel-forestier",
-        "Produits forestiers"
-      );
-      categoryList[2][1] = getLink(
-        "backhoe-loaders-chargeuses-pelleteuses",
-        "Rétrocaveuses"
-      );
-      categoryList[2][2] = getLink(
-        "articulated-trucks-tombereaux-articules",
-        "Tombereaux Articulés"
-      );
-      categoryList[2][3] = getLink(
-        "off-highway-trucks-tractors-tombereaux-rigides-tracteurs",
-        "Tombereaux rigides / tracteurs"
-      );
-      categoryList[2][4] = getLink(
-        "track-type-tractors-dozers-tracteurs-sur-chaines",
-        "Tracteurs Sur Chaines"
-      );
-    } else if (Constants.isEnvironmentBFE && props.lang === "en") {
-      categoryList[0][0] = getLink(
-        "skid-steer-loaders-asv-chargeurs-compacts-rigides",
-        "Skid Steer Loaders",
-        undefined,
-        attachmentImage
-      );
-      categoryList[0][1] = getLink(
-        "backhoe-loaders-chargeuses-pelleteuses",
-        "Backhoe Loaders",
-        undefined,
-        backhoeLoaderImage
-      );
-      categoryList[1][0] = getLink(
-        "compact-track-loader-compact-track-loader",
-        "Compact Track Loaders",
-        undefined,
-        compactTrackLoaderImage
-      );
-
-      categoryList[1][1] = getLink(
-        "telehandlers-chargeurs-a-bras-telescopique",
-        "Telehandlers",
-        undefined,
-        compactorImage
-      );
-      categoryList[2][0] = getLink(
-        "excavators-pelles-hydrauliques",
-        "Excavators",
-        undefined,
-        excavatorImage
-      );
-      categoryList[2][1] = getLink(
-        "compactors-compacteurs",
-        "Compaction Equipment",
-        undefined,
-        skidSteerLoaderImage
-      );
-
-      // categoryList[3][0] = getLink(
-      //   "wheel-loaders-integrated-toolcarriers-chargeurs-sur-pneus-chargeurs-industriels",
-      //   "Wheel Loaders",
-      //   undefined,
-      //   telehandlerImage
-      // );
-      // categoryList[3][1] = getLink(
-      //   "work-tools-outils-de-travail",
-      //   "Attachments",
-      //   undefined,
-      //   wheelLoaderImage
-      // );
-    } else if (Constants.isEnvironmentBFE && props.lang === "fr") {
-      // categoryList[0][0] = getLink(
-      //   "work-tools-outils-de-travail",
-      //   "Accessoires",
-      //   undefined,
-      //   attachmentImage
-      // );
-      categoryList[0][0] = getLink(
-        "telehandlers-chargeurs-a-bras-telescopique",
-        "Chargeurs À Bras Télescopique",
-        undefined,
-        backhoeLoaderImage
-      );
-      categoryList[0][1] = getLink(
-        "skid-steer-loaders-asv-chargeurs-compacts-rigides",
-        "Chargeurs Compacts rigides",
-        undefined,
-        compactTrackLoaderImage
-      );
-
-      // categoryList[1][0] = getLink(
-      //   "wheel-loaders-integrated-toolcarriers-chargeurs-sur-pneus-chargeurs-industriels",
-      //   "Chargeurs Sur Pneus",
-      //   undefined,
-      //   compactorImage
-      // );
-      categoryList[1][0] = getLink(
-        "compact-track-loader-compact-track-loader",
-        "Chargeuses à chaînes compactes",
-        undefined,
-        excavatorImage
-      );
-      categoryList[1][1] = getLink(
-        "backhoe-loaders-chargeuses-pelleteuses",
-        "Chargeuses-pelleteuses",
-        undefined,
-        skidSteerLoaderImage
-      );
-
-      categoryList[2][0] = getLink(
-        "compactors-compacteurs",
-        "Équipment Compact",
-        undefined,
-        telehandlerImage
-      );
-      categoryList[2][1] = getLink(
-        "excavators-pelles-hydrauliques",
-        "Pelles Hydrauliques",
-        undefined,
-        wheelLoaderImage
-      );
-    } else if (Constants.isEnvironmentBFERENTAL && props.lang === "en") {
-      // BFERental images
-      categoryList[0][0] = getLink(
-        "BFE001",
-        "Air Compressors",
-        undefined,
-        aircompressorsImage
-      );
-      categoryList[0][1] = getLink(
-        "BFE013",
-        "Backhoe Loaders",
-        undefined,
-        backhoeloadersImage
-      );
-      categoryList[0][2] = getLink(
-        "BFE012",
-        "Compaction Equipment",
-        undefined,
-        compactionequipmentImage
-      );
-      categoryList[0][3] = getLink(
-        "BFE010",
-        "Compact Track Loaders",
-        undefined,
-        compacttrackloadersImage
-      );
-      categoryList[1][0] = getLink(
-        "BFE011",
-        "Excavators",
-        undefined,
-        excavatorsImage
-      );
-      categoryList[1][1] = getLink(
-        "BFE002",
-        "Generators",
-        undefined,
-        generatorsImage
-      );
-      categoryList[1][2] = getLink(
-        "BFE008",
-        "Lawn & Garden Equipment",
-        undefined,
-        lawngardenequipmentImage
-      );
-      categoryList[1][3] = getLink(
-        "BFE003",
-        "Light Towers",
-        undefined,
-        lighttowersImage
-      );
-      categoryList[2][0] = getLink(
-        "BFE014",
-        "Material Handling",
-        undefined,
-        materialhandlingImage
-      );
-      categoryList[2][1] = getLink(
-        "BFE006",
-        "Message & Arrow Boards",
-        undefined,
-        messagearrowboardsImage
-      );
-      categoryList[2][2] = getLink("BFE015", "Miscellaneous", undefined);
-      categoryList[2][3] = getLink("BFE004", "Pumps", undefined, pumpsImage);
-      categoryList[3][0] = getLink(
-        "BFE005",
-        "Scissor Lifts & Booms",
-        undefined,
-        scissorliftsboomsImage
-      );
-      categoryList[3][1] = getLink(
-        "BFE009",
-        "Skid Steer Loaders",
-        undefined,
-        skidsteerloadersImage
-      );
-      categoryList[3][2] = getLink(
-        "BFE017",
-        "Trench Shoring",
-        undefined,
-        trenchshoringImage
-      );
-      categoryList[3][3] = getLink(
-        "BFE016",
-        "Trench Shoring",
-        undefined,
-        trenchshoringImage
-      );
-    }
-    return categoryList;
-  };
-
   const getLink = (
     groupCode: string,
     groupDisplayName: string,
@@ -383,9 +83,7 @@ const CategorySection = (props: Props_CategorySection) => {
     const linkClasses = groupCount ? "homeequiplink" : "homeequiplink default";
     return (
       <Link key={groupCode} className={linkClasses} to={href}>
-        {Constants.isEnvironmentBFE_or_BFERENTAL && (
-          <img src={groupImage} alt={groupDisplayName} />
-        )}
+        <img src={groupImage} alt={groupDisplayName} />
         {groupDisplayName}&nbsp;
         {groupCount && (
           <span className="badge badge-primary">{groupCount}</span>
@@ -397,7 +95,10 @@ const CategorySection = (props: Props_CategorySection) => {
   //Set columns based on environment
   let numberOfColumns = 3;
   let columnClass = "col-sm-4"; //3 columns
-  if (Constants.isEnvironmentBFE_or_BFERENTAL) {
+  if (
+    Constants.isEnvironmentBFE_or_BFERENTAL ||
+    Constants.isEnvironmentJOBSITE
+  ) {
     numberOfColumns = 4;
     columnClass = "col-sm-3"; //4 columns
   }
@@ -417,6 +118,7 @@ const CategorySection = (props: Props_CategorySection) => {
 
       let count = 0;
       let column = 0;
+
       // Grouped category images object (BFE)
       const categoryImagesBFE = {
         "Work Tools - Outils De Travail": attachmentImage,
@@ -449,6 +151,23 @@ const CategorySection = (props: Props_CategorySection) => {
         "BFE009": skidsteerloadersImage,
         "BFE017": trenchshoringImage,
         "BFE016": weldersImage,
+      };
+
+      // Grouped category images object (Jobsite)
+      const categoryImagesJobsite = {
+        "JEIJ01": hoistingImage,
+        "JEIJ02": materialImage,
+        "JEIJ03": jacksImage,
+        "JEIJ04": weldingImage,
+        "JEIJ05": pipeBendingImage,
+        "JEIJ06": pipeFabImage,
+        "JEIJ07": wireImage,
+        "JEIJ08": electricToolsImage,
+        "JEIJ09": airToolsImage,
+        "JEIJ10": confinedImage,
+        "JEIJ11": storageImage,
+        "JEIJ12": torqueImage,
+        "JEIJ13": miscJobsiteImage,
       };
 
       const endColumnCheck = (c) => {
@@ -489,6 +208,17 @@ const CategorySection = (props: Props_CategorySection) => {
             categoryList[column].push(newLink);
             endColumnCheck(count);
             console.log("bfe rental running");
+            // If Jobsite  images, grab category images and load
+          } else if (Constants.isEnvironmentJOBSITE) {
+            const newLink = getLink(
+              group["group-code"],
+              group["group-display-name"],
+              group.count,
+              categoryImagesJobsite[group["group-code"]]
+            );
+            categoryList[column].push(newLink);
+            endColumnCheck(count);
+            console.log("jobsite running");
           }
         }
       });
@@ -520,11 +250,9 @@ const CategorySection = (props: Props_CategorySection) => {
             <div className={columnClass}>
               {categoryList[2].length > 0 ? categoryList[2] : ""}
             </div>
-            {Constants.isEnvironmentBFERENTAL && (
-              <div className={columnClass}>
-                {categoryList[3].length > 0 ? categoryList[3] : ""}
-              </div>
-            )}
+            <div className={columnClass}>
+              {categoryList[3].length > 0 ? categoryList[3] : ""}
+            </div>
           </div>
           <div className="clearfix"></div>
         </div>

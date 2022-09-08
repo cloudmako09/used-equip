@@ -1,7 +1,10 @@
 import React from "react";
 import * as Types from "../../common/Types";
 import { outputEnFr } from "../../common/HelperFunctions";
-import { isEnvironmentBFERENTAL } from "../../common/Constants";
+import {
+  isEnvironmentBFERENTAL,
+  isEnvironmentJOBSITE,
+} from "../../common/Constants";
 
 type props_SelectManufacturer = {
   lang: string;
@@ -24,7 +27,7 @@ const SelectManufacturer = (props: props_SelectManufacturer) => {
 
   return (
     <>
-      {isEnvironmentBFERENTAL ? (
+      {isEnvironmentBFERENTAL || isEnvironmentJOBSITE ? (
         ""
       ) : (
         <>

@@ -8,6 +8,7 @@ import * as serviceWorker from "./serviceWorker";
 import {
   isEnvironmentTCAT,
   isEnvironmentBFE_or_BFERENTAL,
+  isEnvironmentJOBSITE,
 } from "./pages/common/Constants";
 
 let tagManagerArgs;
@@ -18,6 +19,10 @@ if (isEnvironmentBFE_or_BFERENTAL) {
 } else if (isEnvironmentTCAT) {
   tagManagerArgs = {
     gtmId: "GTM-PB9SM93",
+  };
+} else if (isEnvironmentJOBSITE) {
+  tagManagerArgs = {
+    gtmId: "GTM-NNBKST2",
   };
 }
 
